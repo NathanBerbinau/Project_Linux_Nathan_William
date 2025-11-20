@@ -20,7 +20,7 @@ def main():
     # Auto-refresh toggle
     auto_refresh = st.sidebar.checkbox("Auto-refresh (every 5 min)", value=False)
 
-    st.sidebar.title("🎯 Navigation")
+    st.sidebar.title("Navigation")
     st.sidebar.info("""
     **About this Dashboard:**
     - Real-time market data
