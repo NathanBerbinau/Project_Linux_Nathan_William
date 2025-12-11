@@ -227,6 +227,3 @@ st.download_button("Télécharger prix (.csv)", data=prices.to_csv().encode(), f
 st.download_button("Télécharger NAV (.csv)", data=portfolio_nav.to_frame("NAV").to_csv().encode(), file_name="portfolio_nav.csv")
 
 st.info("Module prêt à être intégré dans la page principale. N'oublie pas de créer une branche 'quant-b' et d'ouvrir une PR.")
-
-
-
