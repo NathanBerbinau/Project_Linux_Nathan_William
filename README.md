@@ -34,3 +34,5 @@ Real-time financial analysis dashboard with backtesting strategies.
 
 Dashboard running 24/7 on AWS EC2
 
+
+URL: http://16.170.219.160:8501
