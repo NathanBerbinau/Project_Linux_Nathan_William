@@ -7,14 +7,9 @@ from modules.Quant_A.data_fetcher import DataFetcher
 from modules.Quant_A.strategies import TradingStrategies
 from modules.Quant_A.metrics import PerformanceMetrics
 
-def render_quant_a_dashboard(refresh_count: int):
+def render_quant_a_dashboard():
     """Main dashboard for single asset analysis"""
-
-    st.header("Single Asset Analysis - Module A")
-
-    if refresh_count > 0:
-        st.session_state["last_update"] = time.time()
-
+    st.title("Quant A — Single Asset Analysis")
     # Initialize data fetcher
     fetcher = DataFetcher()
 

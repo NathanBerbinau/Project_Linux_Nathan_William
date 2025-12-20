@@ -11,22 +11,17 @@ from modules.Quant_B.qwant_b import (
     annualized_sharpe
 )
 
-def render_quant_b_dashboard(refresh_count: int):
+def render_quant_b_dashboard():
     """Main dashboard for multi assets analysis"""
-    st.set_page_config(page_title="Quant B — Multi-Asset Portfolio", layout="wide")
-    st.title("Quant B — Multivariate Portfolio Module")
+    st.title("Quant B — Portfolio Analysis")
 
-    if refresh_count > 0:
-        st.session_state["last_update"] = time.time()
-
-    # Sidebar controls
     st.sidebar.header("Data & Parameters")
     default_tickers = ["AAPL", "MSFT", "GOOGL"]  # example - change to assets you want
     tickers_input = st.sidebar.text_input("Tickers (comma separated)", value=",".join(default_tickers),help="Enter stock tickers separated by commas")
     tickers = [t.strip().upper() for t in tickers_input.split(",") if t.strip()]
 
-    period = st.sidebar.selectbox("Historical Period", options=["6mo", "1y", "2y", "5y"], index=1)
-    interval = st.sidebar.selectbox("Interval", options=["1d", "1wk", "1mo"], index=0)
+    period = st.sidebar.selectbox("Historical Period", options=["6mo", "1y", "2y", "5y"], index=1, key="quant_b_period")
+    interval = st.sidebar.selectbox("Interval", options=["1d", "1wk", "1mo"], index=0, key="quant_b_interval")
 
     st.sidebar.markdown("---")
     st.sidebar.header("Portfolio Strategy")

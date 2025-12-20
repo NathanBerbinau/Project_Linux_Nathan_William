@@ -39,27 +39,32 @@ def main():
         - Daily automated reports
         """)
 
-    if auto_refresh:
-        refresh_count=st_autorefresh(interval=300_000, key="global_refresh")
-    else:
-        refresh_count=0
+    REFRESH_INTERVAL = 300
 
-    if st.session_state['last_update'] is not None:
-        elapsed = int(time.time() - st.session_state['last_update'])
+    if auto_refresh:
+        now = time.time()
+        if st.session_state["next_data_update"] is None:
+            st.session_state["next_data_update"] =  now+ REFRESH_INTERVAL
+
+        if now >= st.session_state["next_data_update"]:
+            st.session_state["next_data_update"] = now + REFRESH_INTERVAL
+
+        remaining = int(st.session_state["next_data_update"] - time.time())
+        remaining = max(0, remaining)
         st.sidebar.info(
-            f"Last update: {elapsed // 60} min {elapsed % 60:02d} s ago"
+            f"Next refresh in: {remaining // 60} min {remaining % 60:02d} s"
         )
     else:
-        st.sidebar.info("Last update: N/A")
-
+        st.session_state["next_data_update"] = None
+        st.sidebar.info("Auto-refresh disabled")
 
 
     if page_selection == "Single Asset Analysis (Quant A)":
         st.sidebar.subheader("Module Quant A")
-        render_quant_a_dashboard(refresh_count)
+        render_quant_a_dashboard()
     else:
         st.sidebar.subheader("Module Quant B")
-        render_quant_b_dashboard(refresh_count)
+        render_quant_b_dashboard()
     #Footer
     st.sidebar.markdown("---")
 
