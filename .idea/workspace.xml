@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b20c7f-9131-4e51-9a43-a8e77cc4dedb" name="Changes" comment="some modification , plus the add of the missing __init__.py">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/Quant_B/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/Quant_B/dashboard.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +155,8 @@
       <option name="presentableId" value="Default" />
       <updated>1763657336223</updated>
       <workItem from="1763657337363" duration="2845000" />
-      <workItem from="1766237952242" duration="4005000" />
+      <workItem from="1766237952242" duration="4366000" />
+      <workItem from="1766242907775" duration="1436000" />
     </task>
     <task id="LOCAL-00001" summary="new branch">
       <option name="closed" value="true" />

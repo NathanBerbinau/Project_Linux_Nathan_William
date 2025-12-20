@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 import plotly.graph_objects as go
 import numpy as np
 import pandas as pd
@@ -14,6 +15,8 @@ def render_quant_b_dashboard():
     """Main dashboard for multi assets analysis"""
     st.set_page_config(page_title="Quant B — Multi-Asset Portfolio", layout="wide")
     st.title("Quant B — Multivariate Portfolio Module")
+
+    count = st_autorefresh(interval=300_000, key="autorefresh")
 
     # Sidebar controls
     st.sidebar.header("Data & Parameters")
