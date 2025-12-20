@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
@@ -6,10 +7,13 @@ from modules.Quant_A.data_fetcher import DataFetcher
 from modules.Quant_A.strategies import TradingStrategies
 from modules.Quant_A.metrics import PerformanceMetrics
 
-def render_quant_a_dashboard():
+def render_quant_a_dashboard(refresh_count: int):
     """Main dashboard for single asset analysis"""
 
     st.header("Single Asset Analysis - Module A")
+
+    if refresh_count > 0:
+        st.session_state["last_update"] = time.time()
 
     # Initialize data fetcher
     fetcher = DataFetcher()

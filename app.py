@@ -13,7 +13,9 @@ st.set_page_config(
 
 # Initialisation de l'état pour l'heure de mise à jour si elle n'existe pas
 if 'last_update' not in st.session_state:
-    st.session_state['last_update'] = 'N/A'
+    st.session_state['last_update'] = None
+
+st_autorefresh(interval=1000, key="ui_clock")
 
 def main():
     st.markdown('<h1 style="text-align: center; color: #1f77b4;"> Quantitative Finance Dashboard</h1>',
@@ -38,16 +40,26 @@ def main():
         """)
 
     if auto_refresh:
-        st_autorefresh(interval=300_000, key="global_refresh")
+        refresh_count=st_autorefresh(interval=300_000, key="global_refresh")
+    else:
+        refresh_count=0
+
+    if st.session_state['last_update'] is not None:
+        elapsed = int(time.time() - st.session_state['last_update'])
+        st.sidebar.info(
+            f"Last update: {elapsed // 60} min {elapsed % 60:02d} s ago"
+        )
+    else:
+        st.sidebar.info("Last update: N/A")
+
+
 
     if page_selection == "Single Asset Analysis (Quant A)":
         st.sidebar.subheader("Module Quant A")
-        st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
-        render_quant_a_dashboard()
+        render_quant_a_dashboard(refresh_count)
     else:
         st.sidebar.subheader("Module Quant B")
-        st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
-        render_quant_b_dashboard()
+        render_quant_b_dashboard(refresh_count)
     #Footer
     st.sidebar.markdown("---")
 
