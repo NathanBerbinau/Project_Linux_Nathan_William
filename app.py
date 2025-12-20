@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 from modules.Quant_A.dashboard import render_quant_a_dashboard
-from modules.Quant_B.dashboard import render_quant_b_dashboard # <-- IMPORT DE VOTRE MODULE
+from modules.Quant_B.dashboard import render_quant_b_dashboard
 
 # Page configuration
 st.set_page_config(

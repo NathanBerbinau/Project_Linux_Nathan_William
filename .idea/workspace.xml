@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18b20c7f-9131-4e51-9a43-a8e77cc4dedb" name="Changes" comment="new branch">
+    <list default="true" id="18b20c7f-9131-4e51-9a43-a8e77cc4dedb" name="Changes" comment="some modification , plus the add of the missing __init__.py">
+      <change afterPath="$PROJECT_DIR$/modules/Quant_B/dashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/Quant_B/qwant_b.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/Quant_B/qwant_b.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -168,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766229912877</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="some modification , plus the add of the missing __init__.py">
+      <option name="closed" value="true" />
+      <created>1766230334760</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766230334760</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
