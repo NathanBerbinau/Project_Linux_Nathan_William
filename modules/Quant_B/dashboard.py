@@ -15,10 +15,6 @@ def render_quant_b_dashboard():
     st.set_page_config(page_title="Quant B — Multi-Asset Portfolio", layout="wide")
     st.title("Quant B — Multivariate Portfolio Module")
 
-    # Auto-refresh every 5 minutes (300000 ms)
-    from streamlit_autorefresh import st_autorefresh
-    count = st_autorefresh(interval=300_000, key="autorefresh")  # 5 minutes
-
     # Sidebar controls
     st.sidebar.header("Data & Parameters")
     default_tickers = ["AAPL", "MSFT", "GOOGL"]  # example - change to assets you want
