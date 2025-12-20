@@ -41,26 +41,26 @@ def main():
             placeholder = st.empty()
             while True:
                 with placeholder.container():
-                    render_quant_a_dashboard()
                     st.sidebar.subheader("Module Quant A")
+                    render_quant_a_dashboard()
                 time.sleep(300)  # 5 minutes
         else:
-            render_quant_a_dashboard()
             st.sidebar.subheader("Module Quant A")
+            render_quant_a_dashboard()
 
     else:
         if auto_refresh:
             placeholder = st.empty()
             while True:
                 with placeholder.container():
-                    render_quant_b_dashboard()
                     st.sidebar.subheader("Module Quant B")
                     st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
+                    render_quant_b_dashboard()
                 time.sleep(300)  # 5 minutes
         else:
-            render_quant_b_dashboard()
             st.sidebar.subheader("Module Quant B")
             st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
+            render_quant_b_dashboard()
     #Footer
     st.sidebar.markdown("---")
 
