@@ -37,21 +37,16 @@ def main():
         - Daily automated reports
         """)
 
+    if auto_refresh:
+        st_autorefresh(interval=300_000, key="global_refresh")
+
     if page_selection == "Single Asset Analysis (Quant A)":
         st.sidebar.subheader("Module Quant A")
         st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
-
-        if auto_refresh:
-            st_autorefresh(interval=300_000, key="quant_b_refresh")
-
         render_quant_a_dashboard()
     else:
         st.sidebar.subheader("Module Quant B")
         st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
-
-        if auto_refresh:
-            st_autorefresh(interval=300_000, key="quant_b_refresh")
-
         render_quant_b_dashboard()
     #Footer
     st.sidebar.markdown("---")
