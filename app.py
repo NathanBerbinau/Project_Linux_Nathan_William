@@ -6,7 +6,6 @@ from modules.Quant_B.dashboard import render_quant_b_dashboard
 # Page configuration
 st.set_page_config(
     page_title="Quant Finance Dashboard",
-    #page_icon="📈",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -16,38 +15,30 @@ if 'last_update' not in st.session_state:
     st.session_state['last_update'] = 'N/A'
 
 def main():
-    st.markdown('<h1 style="text-align: center; color: #1f77b4;"> Quantitative Finance Dashboard</h1>',
+    st.markdown('<div style="text-align: center; color: #1f77b4;"> Quantitative Finance Dashboard</div>',
                 unsafe_allow_html=True)
     st.markdown("**Real-time market analysis with backtesting capabilities**")
     st.markdown("---")
 
+    st.sidebar.title("Navigation")
+    page_selection = st.sidebar.radio(
+        "Select Module",
+        ["Single Asset Analysis (Quant A)", "Portfolio Analysis (Quant B)"]
+    )
     # Auto-refresh toggle
     auto_refresh = st.sidebar.checkbox("Auto-refresh (every 5 min)", value=False)
 
-    st.sidebar.title("Navigation")
-    
-    # -----------------------------------------------------
-    # NOUVELLE LOGIQUE : SÉLECTEUR DE MODULE DANS LA SIDEBAR
-    
-    page_selection = st.sidebar.radio( # <-- AJOUT DU SÉLECTEUR DE PAGE
-        "Choisissez le Module", 
-        ["Analyse Actif Unique (Quant A)", "Analyse de Portefeuille (Quant B)"]
-    )
-    
-    # DÉTERMINER LA FONCTION DE RENDU
-    if page_selection == "Analyse Actif Unique (Quant A)":
+
+    if page_selection == "Single Asset Analysis (Quant A)":
         render_function = render_quant_a_dashboard
         st.sidebar.subheader("Module Quant A")
-        
+
     else: # Analyse de Portefeuille (Quant B)
         render_function = render_quant_b_dashboard
         st.sidebar.subheader("Module Quant B")
         # Afficher l'heure de la dernière mise à jour des données (Exigence 5)
-        st.sidebar.info(f"Dernière Actualisation: {st.session_state['last_update']}")
+        st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
 
-
-    # FIN DE LA NOUVELLE LOGIQUE
-    # -----------------------------------------------------
 
     st.sidebar.info("""
     **About this Dashboard:**

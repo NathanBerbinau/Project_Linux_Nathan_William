@@ -10,8 +10,11 @@ from datetime import datetime, timedelta
 from math import sqrt
 
 @st.cache_data(ttl=300)  # cache 5 minutes
-@st.cache_data(ttl=300)
 def fetch_price_series(tickers, period="1y", interval="1d"):
+    """
+    Fetch price series for multiple tickers
+    Returns DataFrame with dates as index and tickers as columns
+    """
     data = yf.download(tickers, period=period, interval=interval, progress=False)
 
     if data is None or len(data) == 0:
@@ -49,9 +52,22 @@ def fetch_price_series(tickers, period="1y", interval="1d"):
 
 
 def compute_returns(prices):
+    """Calculate daily returns from price series"""
     return prices.pct_change().dropna()
 
 def compute_portfolio_value(prices, weights, rebal_freq_days=None, start_capital=1_000_000):
+    """
+       Compute portfolio value over time
+
+       Args:
+           prices: DataFrame of adjusted close prices
+           weights: np.array aligned with columns (sum to 1)
+           rebal_freq_days: None => buy and hold; otherwise int days for rebalancing
+           start_capital: initial portfolio value
+
+       Returns:
+           pd.Series of portfolio values
+       """
     # prices: DataFrame of adj close
     # weights: np.array aligned with columns (sum to 1)
     # rebal_freq_days: None => buy and hold; otherwise int days
@@ -83,14 +99,25 @@ def compute_portfolio_value(prices, weights, rebal_freq_days=None, start_capital
         return pv
 
 def annualized_sharpe(returns, risk_free=0.0, periods_per_year=252):
+    """
+    Calculate annualized Sharpe ratio
+    """
     # returns: daily returns series or DataFrame
     mu = returns.mean() * periods_per_year
     sigma = returns.std() * sqrt(periods_per_year)
     # avoid division by zero
-    sharpe = (mu - risk_free) / (sigma.replace(0, np.nan))
+    if sigma == 0:
+        return np.nan
+
+    sharpe = (mu - risk_free) / sigma
     return sharpe
 
 def max_drawdown(series):
+    """
+    Calculate maximum drawdown from cumulative NAV
+    Returns:
+        Maximum drawdown (negative value)
+    """
     # series: cumulative NAV (pd.Series)
     cum_max = series.cummax()
     drawdown = (series - cum_max) / cum_max
