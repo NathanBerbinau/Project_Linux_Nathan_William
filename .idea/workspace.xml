@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18b20c7f-9131-4e51-9a43-a8e77cc4dedb" name="Changes" comment="some modification , plus the add of the missing __init__.py">
-      <change afterPath="$PROJECT_DIR$/modules/Quant_B/dashboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modules/Quant_B/qwant_b.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/Quant_B/qwant_b.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
