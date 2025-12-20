@@ -15,7 +15,7 @@ if 'last_update' not in st.session_state:
     st.session_state['last_update'] = 'N/A'
 
 def main():
-    st.markdown('<div style="text-align: center; color: #1f77b4;"> Quantitative Finance Dashboard</div>',
+    st.markdown('<h1 style="text-align: center; color: #1f77b4;"> Quantitative Finance Dashboard</h1>',
                 unsafe_allow_html=True)
     st.markdown("**Real-time market analysis with backtesting capabilities**")
     st.markdown("---")
