@@ -16,8 +16,6 @@ def render_quant_b_dashboard():
     st.set_page_config(page_title="Quant B — Multi-Asset Portfolio", layout="wide")
     st.title("Quant B — Multivariate Portfolio Module")
 
-    count = st_autorefresh(interval=300_000, key="autorefresh")
-
     # Sidebar controls
     st.sidebar.header("Data & Parameters")
     default_tickers = ["AAPL", "MSFT", "GOOGL"]  # example - change to assets you want

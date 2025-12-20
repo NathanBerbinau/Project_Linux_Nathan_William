@@ -38,17 +38,13 @@ def main():
         """)
 
     if page_selection == "Single Asset Analysis (Quant A)":
-        if auto_refresh:
-            placeholder = st.empty()
-            while True:
-                with placeholder.container():
-                    st.sidebar.subheader("Module Quant A")
-                    render_quant_a_dashboard()
-                time.sleep(300)  # 5 minutes
-        else:
-            st.sidebar.subheader("Module Quant A")
-            render_quant_a_dashboard()
+        st.sidebar.subheader("Module Quant A")
+        st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
 
+        if auto_refresh:
+            st_autorefresh(interval=300_000, key="quant_b_refresh")
+
+        render_quant_a_dashboard()
     else:
         st.sidebar.subheader("Module Quant B")
         st.sidebar.info(f"Last Refresh: {st.session_state['last_update']}")
